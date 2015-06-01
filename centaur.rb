@@ -1,5 +1,6 @@
 class Centaur
   attr_reader :name, :breed
+  CRANKY_RESPONSE = "NO!"
 
   def initialize(name, breed)
     @name = name
@@ -8,15 +9,24 @@ class Centaur
     @cranky = 0
   end
 
+
   def shoot
-    return "NO!" if self.cranky? || self.laying?
-    @cranky += 1
+    return CRANKY_RESPONSE if not_ready_for_action
+    getting_cranky
     "Twang!!!"
   end
 
-  def run
-    return "NO!" if self.cranky? || self.laying?
+  def getting_cranky
     @cranky += 1
+  end
+
+  def not_ready_for_action
+    self.cranky? || self.laying?
+  end
+
+  def run
+    return CRANKY_RESPONSE if not_ready_for_action
+    getting_cranky
     "Clop clop clop clop!!!"
   end
 
@@ -29,7 +39,7 @@ class Centaur
   end
 
   def sleep
-    return "NO!" if self.standing?
+    return CRANKY_RESPONSE if self.standing?
     @cranky = 0
   end
 
