@@ -16,6 +16,7 @@ A collection of simple exercises to practice Ruby and TDD
 
 ## Extra Challenges
 
+
 ### Testing with RSpec
 
 For the majority of the class we use minitest because there's so little to
