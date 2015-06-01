@@ -10,19 +10,19 @@ class WerewolfTest < Minitest::Test
   end
 
   def test_it_has_a_location
-    skip
+    # skip
     werewolf = Werewolf.new("David","London")
     assert_equal "London", werewolf.location
   end
 
   def test_it_is_by_default_in_human_form
-    skip
+    # skip
     werewolf = Werewolf.new("David","London")
     assert werewolf.human?
   end
 
   def test_it_can_change
-    skip
+    # skip
     werewolf = Werewolf.new("David","London")
     assert werewolf.respond_to?(:change!)
   end
