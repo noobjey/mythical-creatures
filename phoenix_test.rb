@@ -3,6 +3,7 @@ require "minitest/pride"
 require_relative "phoenix"
 
 class PhoenixTest < Minitest::Test
+  LIFES = 4
 
   def test_it_has_a_name
     phoenix = Phoenix.new("Geoffrey")
@@ -81,7 +82,7 @@ class PhoenixTest < Minitest::Test
 
     assert phoenix.alive?
 
-    4.times do
+    LIFES.times do
       phoenix.get_killed
       phoenix.revive
     end
@@ -92,6 +93,7 @@ class PhoenixTest < Minitest::Test
     refute phoenix.alive?
   end
 
+
   def test_can_not_revive_if_alive
     phoenix = Phoenix.new("Brody")
 
@@ -100,13 +102,13 @@ class PhoenixTest < Minitest::Test
     phoenix.revive
 
     assert phoenix.alive?
-    assert_equal 4, phoenix.lifes_left
+    assert_equal LIFES, phoenix.lifes_left
   end
 
   def test_can_not_kill_if_dead
     phoenix = Phoenix.new("McGarnicle")
     expected = "IM DEAD ALREADY DUMASS"
-    
+
     assert phoenix.alive?
     phoenix.get_killed
     refute phoenix.alive?
@@ -117,3 +119,4 @@ class PhoenixTest < Minitest::Test
     assert_equal expected, result
   end
 end
+
