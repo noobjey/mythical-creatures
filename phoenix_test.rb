@@ -92,4 +92,27 @@ class PhoenixTest < Minitest::Test
     refute phoenix.alive?
   end
 
+  def test_can_not_revive_if_alive
+    phoenix = Phoenix.new("Brody")
+
+    assert phoenix.alive?
+
+    phoenix.revive
+
+    assert phoenix.alive?
+    assert_equal 4, phoenix.lifes_left
+  end
+
+  def test_can_not_kill_if_dead
+    phoenix = Phoenix.new("McGarnicle")
+    expected = "IM DEAD ALREADY DUMASS"
+    assert phoenix.alive?
+    phoenix.get_killed
+    refute phoenix.alive?
+
+    result = phoenix.get_killed
+
+    refute phoenix.alive?
+    assert_equal expected, result
+  end
 end
