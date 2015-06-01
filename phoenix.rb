@@ -28,7 +28,7 @@ class Phoenix
   end
 
   def revive
-    if out_of_lives? && dead?
+    if dead? && lifes_left?
       @alive = true
       use_a_life
     end
@@ -42,7 +42,7 @@ class Phoenix
     @lifes_left -= 1
   end
 
-  def out_of_lives?
-    !@lifes_left.zero?
+  def lifes_left?
+    @lifes_left > 0
   end
 end

@@ -106,6 +106,7 @@ class PhoenixTest < Minitest::Test
   def test_can_not_kill_if_dead
     phoenix = Phoenix.new("McGarnicle")
     expected = "IM DEAD ALREADY DUMASS"
+    
     assert phoenix.alive?
     phoenix.get_killed
     refute phoenix.alive?
